@@ -43,8 +43,8 @@ public final class IotCarsServer {
                  @Override
                  public void initChannel(SocketChannel ch) throws Exception {
                      ChannelPipeline p = ch.pipeline();
-//                     p.addLast(new IotCarsServerHandler());
-                     p.addLast(new IotCarsDiscardServerHandler());
+                     p.addLast(new IotCarsServerHandler());
+//                     p.addLast(new IotCarsDiscardServerHandler());
                      p.addLast();
                  }
              });

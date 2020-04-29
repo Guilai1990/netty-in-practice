@@ -16,9 +16,10 @@
 package io.netty.cases.chapter.demo7;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.cases.chapter.demo8.IotCarsClient;
-import io.netty.cases.chapter.demo8.IotCarsClientHandler;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -27,7 +28,7 @@ import io.netty.handler.logging.LoggingHandler;
 /**
  * Created by ¿Ó¡÷∑Â on 2018/8/11.
  */
-public class NoThreadSecurityClient {
+public class NoThreadSecurityClient1 {
 
     static final String HOST = System.getProperty("host", "127.0.0.1");
     static final int PORT = Integer.parseInt(System.getProperty("port", "18087"));
@@ -67,6 +68,6 @@ public class NoThreadSecurityClient {
         }
 
     public static void main(String[] args) throws Exception {
-        new NoThreadSecurityClient().run();
+        new NoThreadSecurityClient1().run();
     }
 }

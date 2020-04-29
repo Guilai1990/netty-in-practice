@@ -31,28 +31,28 @@ public class ApiGatewayServerHandler extends ChannelInboundHandlerAdapter {
 
     ExecutorService executorService = Executors.newFixedThreadPool(8);
     @Override
-//    public void channelRead(ChannelHandlerContext ctx, Object msg) {
-//        ctx.write(msg);
-//        char [] req = new char[64 * 1024];
-//        executorService.execute(()->
-//        {
-//            char [] dispatchReq = req;
-//            try
-//            {
-//                TimeUnit.MICROSECONDS.sleep(100);
-//            }catch (Exception e)
-//            {
-//                e.printStackTrace();
-//            }
-//        });
-//    }
-
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         ctx.write(msg);
-        char [] req = new char[((ByteBuf)msg).readableBytes()];
+        char [] req = new char[64 * 1024];
         executorService.execute(()->
         {
             char [] dispatchReq = req;
+            try
+            {
+                TimeUnit.MICROSECONDS.sleep(100);
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+        });
+    }
+
+//    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+//        ctx.write(msg);
+//        char [] req = new char[((ByteBuf)msg).readableBytes()];
+//        executorService.execute(()->
+//        {
+//            char [] dispatchReq = req;
 //            try
 //            {
 //                TimeUnit.MICROSECONDS.sleep(500);
@@ -60,8 +60,8 @@ public class ApiGatewayServerHandler extends ChannelInboundHandlerAdapter {
 //            {
 //                e.printStackTrace();
 //            }
-        });
-    }
+//        });
+//    }
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) {
